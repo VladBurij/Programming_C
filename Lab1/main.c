@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]) {
 	double a, b, c, d, x1, x2;
-	char answ = "y";
+	char answ[1];
 	do {
 		printf("Vvedite a: ");
 		scanf("%lf", &a);
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 			printf("x2 = %lf \n", x2);
 		}
 		printf("Reset? y or n: ");
-		scanf("%c", &answ);
+		scanf("%s ", &answ);
 	} while (answ == "y");
 	return 0;
 }
