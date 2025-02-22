@@ -6,24 +6,29 @@
 
 int main(int argc, char *argv[]) {
 	double a, b, c, d, x1, x2;
-	printf("Vvedite a: ");
-	scanf("%lf", &a);
-	printf("Vvedite b: ");
-	scanf("%lf", &b);
-	printf("Vvedite c: ");
-	scanf("%lf", &c);
-	d = pow(b,2) - 4*a*c;
-	printf("d = %lf \n", d);
-	if (d < 0) printf("No Xs");
-	if (d == 0) {
-		x1 = -b/(2*a);
-		printf("x = %lf \n", x1);
-	}
-	if (d > 0) {
-		x1 = -b + sqrt(d)/(2*a);
-		x2 = -b - sqrt(d)/(2*a);
-		printf("x1 = %lf \n", x1);
-		printf("x2 = %lf \n", x2);
-	}
+	char answ = "y";
+	do {
+		printf("Vvedite a: ");
+		scanf("%lf", &a);
+		printf("Vvedite b: ");
+		scanf("%lf", &b);
+		printf("Vvedite c: ");
+		scanf("%lf", &c);
+		d = pow(b,2) - 4*a*c;
+		printf("d = %lf \n", d);
+		if (d < 0) printf("No Xs \n");
+		if (d == 0) {
+			x1 = -b/(2*a);
+			printf("x = %lf \n", x1);
+		}
+		if (d > 0) {
+			x1 = -b + sqrt(d)/(2*a);
+			x2 = -b - sqrt(d)/(2*a);
+			printf("x1 = %lf \n", x1);
+			printf("x2 = %lf \n", x2);
+		}
+		printf("Reset? y or n: ");
+		scanf("%c", &answ);
+	} while (answ == "y");
 	return 0;
 }
