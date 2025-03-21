@@ -40,6 +40,7 @@ main() {
 	}
 	for (i = 0; i < r; i++) {
 		for (k = 0; k < r; k++) {
+			pow2_matrix[i][k] = 0;
 			for (j = 0; j < r; j++) {
 				pow2_matrix[i][k] += min_matrix[i][j] * min_matrix[j][k];
 			}
