@@ -17,7 +17,6 @@ main() {
 		printf("1) %.2lf 2) %.2lf 3) %.2lf\n", x, y, z);
 		int n;
 		scanf("%d", &n);
-		print("%d", n);
 		printf("Visota storony = %.2lf\n", trige_heigth(x, y, z, n));
 	}
 	else printf("Neverniye storoni, nelza vichislit\n");
