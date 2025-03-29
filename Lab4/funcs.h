@@ -27,10 +27,13 @@ double trige_heigth(double a, double b, double c, int i) {
 	switch(i) {
 		case 1:
 			h = (2*s)/a;
+			break;
 		case 2:
 			h = (2*s)/b;
+			break;
 		case 3:
 			h = (2*s)/c;
+			break;
 		default: 
 			return 0;
 	}
