@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include "funcs.h"
 
 main() {
@@ -11,8 +10,15 @@ main() {
 	scanf("%lf", &y);
 	printf("Vvedite storony: ");
 	scanf("%lf", &z);
-	if (trige_perimetr(x, y, z) == -1) printf("Neverniye storoni, nelza vichislit\n");
-	else printf("Perimetr = %lf \n", trige_perimetr(x, y, z));
-	if (trige_ploschad(x, y, z) == -1) printf("Neverniye storoni, nelza vichislit\n");
-	else printf("Ploschad = %lf \n", trige_ploschad(x, y, z));
+	if (trige_yes(x, y, z)) {
+		printf("Perimetr = %.2lf \n", trige_perimetr(x, y, z));
+		printf("Ploschad = %.2lf \n", trige_ploschad(x, y, z));
+		printf("Select 1/2/3: ");
+		printf("1) %.2lf 2) %.2lf 3) %.2lf\n", x, y, z);
+		int n;
+		scanf("%d", &n);
+		print("%d", n);
+		printf("Visota storony = %.2lf\n", trige_heigth(x, y, z, n));
+	}
+	else printf("Neverniye storoni, nelza vichislit\n");
 }
