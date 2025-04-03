@@ -2,81 +2,66 @@
 #include <stdlib.h>
 #include "funcs.h"
 
+void print_matrix(double **matrix, int r){
+	int i, k;
+	for (i = 0; i < r; i++) {
+		for (k = 0; k < r; k++) printf("[%.2lf] ", matrix[i][k]);
+		printf("\n");
+	}
+}
+
 main() {
-	int r;
-	char operation;
+	int r, i, k, j;
+	double **matrix1, **matrix2, **matrix;
+
 	printf("Vvedite razmer matricy: ");
 	scanf("%d", &r);
-	double matrix1[r][r];
+
+	matrix1 = (double**)malloc(r*sizeof(double*));
+	for(i = 0; i < r; i++) matrix1[i]= (double*)malloc(r*sizeof(double));
 	for (i = 0; i < r; i++) {
 		for (k = 0; k < r; k++){
 			printf("Vvedite chislo: ");
 			scanf("%lf", &matrix1[i][k]);
 		}
 	}
-	double matrix2[r][r];
+	matrix2 = (double**)malloc(r*sizeof(double*));
+	for(i = 0; i < r; i++) matrix2[i]= (double*)malloc(r*sizeof(double));
 	for (i = 0; i < r; i++) {
 		for (k = 0; k < r; k++){
 			printf("Vvedite chislo: ");
 			scanf("%lf", &matrix2[i][k]);
 		}
 	}
-	for (i = 0; i < r; i++) {
-		for (k = 0; k < r; k++){
-			printf("[%.2lf] ", matrix[i][k]);
-		}
-		printf("\n");
-	}
-	printf("----------")
-	for (i = 0; i < r; i++) {
-		for (k = 0; k < r; k++){
-			printf("[%.2lf] ", matrix2[i][k]);
-		}
-		printf("\n");
-	}
-	printf("Select operation: +, -, *\n");
+
+	print_matrix(matrix1, r);
+	printf("----------\n");
+	print_matrix(matrix2, r);
+
+	char operation;
+	printf("Select operation: +, -, *:\n");
+	scanf(" %c", &operation);
 	switch(operation) {
 		case '+':
-			
+			matrix = plus(matrix1, matrix2, r);
+			print_matrix(matrix, r);
 			break;
 		case '-':
-			
+			matrix = minus(matrix1, matrix2, r);
+			print_matrix(matrix, r);
 			break;
 		case '*':
-			
+			matrix = multi(matrix1, matrix2, r);
+			print_matrix(matrix, r);
 			break;
 		default: 
-			printf("Unindentefite operation: +, -, *\n");;
-	
-	printf("Vvedite razmer matricy: ");
-	scanf("%d", &r);
-	int min_matrix[r][r];
-	int pow2_matrix[r][r];
-	for (i = 0; i < r; i++) {
-		for (k = 0; k < r; k++){
-			printf("Vvedite chislo: ");
-			scanf("%d", &min_matrix[i][k]);
-		}
+			printf("Unidentified operation. Only +, -, *\n");
 	}
-	for (i = 0; i < r; i++) {
-		for (k = 0; k < r; k++){
-			printf("[%d] ", min_matrix[i][k]);
-		}
-		printf("\n");
-	}
-	for (i = 0; i < r; i++) {
-		for (k = 0; k < r; k++) {
-			pow2_matrix[i][k] = 0;
-			for (j = 0; j < r; j++) {
-				pow2_matrix[i][k] += min_matrix[i][j] * min_matrix[j][k];
-			}
-		}
-	}
-	printf("Kvadrat matricy raven: \n");
-	for (i = 0; i < r; i++) {
-		for (k = 0; k < r; k++){
-			printf("[%d] ", pow2_matrix[i][k]);
-		}
-		printf("\n");
-	}
+
+	for(i = 0; i < r; i++) free(matrix1[i]);
+	free(matrix1);
+	for(i = 0; i < r; i++) free(matrix2[i]);
+	free(matrix2);
+	for(i = 0; i < r; i++) free(matrix[i]);
+	free(matrix);
 }
