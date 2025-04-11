@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 main() {
 	FILE *input = fopen("input.txt", "r");
 	FILE *output = fopen("output.txt", "w");
-	char str[50], year[4];
-	int i;
-	while (fgets(str, 50, input) != NULL) {
-		for (i = 4; i > 0; i--) strcat(year, str[strlen(str) - i]);
-		printf("%s", year);
+    int year;
+	char surname[50], name[50], patronymic[50];
+    if (!input)
+    {
+        printf("Error! File nothing.\n");
+        return 1;
+    }
+	while ((fscanf(input, "%s %s %s %d\n", &surname, &name, &patronymic, &year))!=EOF) {
+		if (year > 1980) fprintf(output, "%s %s %s %d\n", surname, name, patronymic, year);
 	}
 	fclose(input);
 	fclose(output);
