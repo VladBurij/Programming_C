@@ -23,12 +23,8 @@ main() {
 		//scanf("%s %s %d", &humans[i].surname, &humans[i].name , &humans[i].year);
 	//}
 	//for (int i = 0; i < 4; i++) printf("%s %s %d\n", humans[i].surname, humans[i].name , humans[i].year);
-	while ((fscanf(input, "%s %s %d\n", surname, name, &year))!=EOF) {
-		strcpy(humans[i].surname, surname);
-		strcpy(humans[i].name, name);
-		humans[i].year = year;
+	while ((fscanf(input, "%s %s %d\n", humans[i].surname, humans[i].name, &humans[i].year))!=EOF) {
 		printf("%s %s %d\n", humans[i].surname, humans[i].name, humans[i].year);
-		
 		i++;
 	}
 	qsort(humans, i, sizeof(struct human), sorting);
