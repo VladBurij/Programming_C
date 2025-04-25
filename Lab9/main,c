@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+main() {
+	char str[250], oper;
+	char *istr;
+	double result = 0;
+	int i = 1;
+	printf("Write math expression: ");
+	gets(str);
+	istr = strtok(str, " ");
+	while (istr != NULL){
+		if (i == 1)result = atof(istr);
+		else if (i % 2 == 0) oper = istr[0];
+		else {
+			if (oper == '+') result += atof(istr);
+			else if (oper == '-') result -= atof(istr);
+			else printf("Incorrect operation\n");
+		}
+		istr = strtok(NULL, " ");
+		i++;
+	}
+	printf("Result = %.2lf", result);
+}
