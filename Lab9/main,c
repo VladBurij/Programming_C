@@ -3,23 +3,36 @@
 #include <string.h>
 
 main() {
-	char str[250], oper;
+	char math_str[250], str[250], oper = '+';
 	char *istr;
 	double result = 0;
-	int i = 1;
+	int i, k = 0;
 	printf("Write math expression: ");
-	gets(str);
-	istr = strtok(str, " ");
+	gets(math_str);
+	istr = strtok(math_str, " ");
 	while (istr != NULL){
-		if (i == 1)result = atof(istr);
-		else if (i % 2 == 0) oper = istr[0];
+		if ((istr[0] == '+' & istr[1] == '\0') || (istr[0] == '-' & istr[1] == '\0')) oper = istr[0];
 		else {
-			if (oper == '+') result += atof(istr);
-			else if (oper == '-') result -= atof(istr);
-			else printf("Incorrect operation\n");
+			if (oper == '-' & istr[0] == '-') istr[0] = '+';
+			else if (oper == '-' & istr[0] != '-') {
+				str[0] = '-';
+				k++;
+				oper = '+';
+			}
+			for (i = 0; i <= strlen(istr); i++) {
+				if (((istr[i] == '+' || istr[i] == '-') & i != 0 & i) || istr[i] == '\0'){
+					result += atof(str);
+					memset(str, '\0', sizeof(str));
+					k = 0;
+				}
+				else if ((istr[i] == '+' || istr[i] == '-') & i == strlen(istr) - 1) oper = istr[i];
+				str[k] = istr[i];
+				k++;
+			}
+			k = 0;
+			memset(str, '\0', sizeof(str));
 		}
 		istr = strtok(NULL, " ");
-		i++;
 	}
 	printf("Result = %.2lf", result);
 }
