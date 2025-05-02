@@ -1,1 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+#define max(n, list) ({\
+    double max = list[0];\
+    for (int i = 0; i < n; i++) if (max < list[i]) max = list[i];\
+    max;})
+#define mid(n, list) ({\
+    double sum = 0;\
+    for (int i = 0; i < n; i++) sum += list[i];\
+    sum/n;})
+
+main() {
+    double numbers[] = {34, 23, 12, 43};
+    printf("%.2lf\n", max(4, numbers));
+    printf("%.2lf\n", mid(4, numbers));
+}
