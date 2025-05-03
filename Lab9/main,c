@@ -20,7 +20,7 @@ main() {
 				oper = '+';
 			}
 			for (i = 0; i <= strlen(istr); i++) {
-				if (((istr[i] == '+' || istr[i] == '-') & i != 0 & i) || istr[i] == '\0'){
+				if (((istr[i] == '+' || istr[i] == '-') & i != 0) || istr[i] == '\0'){
 					result += atof(str);
 					memset(str, '\0', sizeof(str));
 					k = 0;
