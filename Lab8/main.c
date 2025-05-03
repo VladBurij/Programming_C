@@ -118,8 +118,8 @@ int sorting_height(const void* a, const void* b) {
 }
 
 main() {
-	FILE *input = fopen("C:/Users/Vlad/Desktop/prog_C/input.txt", "r");
-	FILE *output = fopen("C:/Users/Vlad/Desktop/prog_C/output.txt", "w");
+	FILE *input = fopen("input.txt", "r");
+	FILE *output = fopen("output.txt", "w");
 	struct human humans[100], s_humans[100];
 	int i = 0, k;
 	char ans = 'y';
