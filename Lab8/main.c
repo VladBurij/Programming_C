@@ -114,7 +114,10 @@ int sorting_height(const void* a, const void* b) {
 				break;
 		}
 	}
-	else return ((struct human*)a) -> height - ((struct human*)b) -> height;
+	else {
+		if (((struct human*)a) -> height > ((struct human*)b) -> height) return 1;
+		else return -1;
+	}
 }
 
 main() {
