@@ -15,8 +15,8 @@ void print_matrix(int **matrix, int r){
 
 int main() {
     // Подсчёт времени
-    clock_t time_req;
-    time_req = clock();
+    clock_t timer;
+    timer = clock();
     srand(time(NULL));
     // Задание 1
     int N;
@@ -67,8 +67,7 @@ int main() {
 	free(matrix);
     fclose(f);
     // Задание 7
-    time_req = clock() - time_req;
-    printf("\nTime of programm work: %f seconds\n", (float)time_req / CLOCKS_PER_SEC);
-
+    timer = clock() - timer;
+    printf("\nTime of programm work: %f seconds\n", (float)timer / CLOCKS_PER_SEC);
     return 0;
 }
